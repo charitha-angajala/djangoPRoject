@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4 text-center">
+    ✨ Stories Shared by Others ✨
+</h2>
+
+<form method="get" class="mb-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="input-group shadow-sm">
+                <input
+                    type="text"
+                    name="q"
+                    class="form-control"
+                    placeholder="Search public memories by place..."
+                    value="{{ query|default:'' }}"
+                >
+                <button class="btn btn-primary" type="submit">
+                    Search
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    {% for memory in memories %}
+        <div class="col-md-4 mb-4">
+            <div class="card glass-card shadow-sm h-100">
+
+
+                <div class="position-relative">
+                    <img src="{{ memory.image.url }}" class="card-img-top" alt="Memory image">
+
+                    <span class="badge bg-dark position-absolute top-0 end-0 m-2">
+                        {{ memory.created_at|date:"d M Y" }}
+                    </span>
+                </div>
+
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ memory.title }}</h5>
+                    <p class="text-muted mb-1">{{ memory.place }}</p>
+                    <p class="card-text">{{ memory.description }}</p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No public memories yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

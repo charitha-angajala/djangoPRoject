@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO IMAGE SECTION (HEART OF PROJECT) -->
+<section class="mb-5 position-relative rounded-4 overflow-hidden"
+         style="
+            background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac');
+            background-size: cover;
+            background-position: center;
+            min-height: 75vh;
+         ">
+
+    <!-- Overlay -->
+    <div class="position-absolute top-0 start-0 w-100 h-100"
+         style="background: rgba(0,0,0,0.45);">
+    </div>
+
+    <!-- Content -->
+    <div class="position-relative h-100 d-flex align-items-center justify-content-center text-center text-white px-3">
+        <div>
+            <h1 class="display-3 fw-bold mb-3">Memora</h1>
+
+            <p class="fs-5 mb-4">
+                A place to save moments<br>
+                you never want to lose.
+            </p>
+
+            <div class="mt-4">
+                {% if user.is_authenticated %}
+                    <a href="/memories/" class="btn btn-light btn-lg me-2 px-4">
+                        View My Memories
+                    </a>
+                    <a href="/memories/add/" class="btn btn-outline-light btn-lg px-4">
+                        Add New Memory
+                    </a>
+                {% else %}
+                    <a href="/accounts/register/" class="btn btn-light btn-lg me-2 px-4">
+                        Get Started
+                    </a>
+                    <a href="/memories/public/" class="btn btn-outline-light btn-lg px-4">
+                        Explore Public Memories
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+<!-- STORY SECTION -->
+<div class="row align-items-center mb-5">
+
+    <!-- LEFT: STORY TEXT -->
+    <div class="col-md-6 mb-4 mb-md-0">
+        <h2 class="fw-bold mb-3">
+            Memories fade.<br>
+            <span class="text-primary">Stories shouldn’t.</span>
+        </h2>
+
+        <p class="text-muted fs-5">
+            Photos capture faces.<br>
+            Memora captures <strong>meaning</strong>.
+        </p>
+
+        <p class="text-muted mt-3">
+            Save moments with context, emotion, and place — so you can
+            relive them long after the moment passes.
+        </p>
+    </div>
+
+    <!-- RIGHT: FEATURE CARD -->
+    <div class="col-md-6">
+        <div class="card glass-card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h5 class="fw-bold mb-3">What Memora Gives You</h5>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2">📸 Capture moments with images</li>
+                    <li class="mb-2">📝 Add context, place & feelings</li>
+                    <li class="mb-2">🔒 Keep memories private or public</li>
+                    <li class="mb-2">🌍 Discover stories from others</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- HOW IT WORKS SECTION -->
+<section class="mb-5">
+
+    <h3 class="fw-bold text-center mb-4">
+        How Memora Works
+    </h3>
+
+    <div class="row text-center">
+
+        <!-- STEP 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card glass-card shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-2">1️⃣ Capture</h5>
+                    <p class="text-muted">
+                        Add a photo, place, and description for every moment.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card glass-card shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-2">2️⃣ Preserve</h5>
+                    <p class="text-muted">
+                        Keep memories private or share them publicly — your choice.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card glass-card shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-2">3️⃣ Relive</h5>
+                    <p class="text-muted">
+                        Search and revisit memories anytime, anywhere.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- WHO IS MEMORA FOR -->
+<section class="mb-5">
+
+    <h3 class="fw-bold text-center mb-4">
+        Who is Memora for?
+    </h3>
+
+    <div class="row text-center">
+
+        <div class="col-md-4 mb-4">
+            <div class="card glass-card shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold">🎓 Students</h5>
+                    <p class="text-muted">
+                        Capture college life, friendships, trips, and milestones
+                        you’ll want to remember forever.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card glass-card shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold">👨‍👩‍👧 Families</h5>
+                    <p class="text-muted">
+                        Preserve family moments, celebrations, and everyday memories
+                        in one private space.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card glass-card shadow-sm h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold">🌍 Travelers</h5>
+                    <p class="text-muted">
+                        Save journeys with places, photos, and feelings —
+                        not just pictures.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FINAL CTA SECTION -->
+<section class="text-center mb-5 mt-4">
+
+    <h3 class="fw-bold">
+        Start Preserving Your Memories Today
+    </h3>
+
+    <p class="text-muted mt-2">
+        Because the moments that matter deserve a place of their own.
+    </p>
+
+    <div class="mt-4">
+        {% if user.is_authenticated %}
+            <a href="/memories/add/" class="btn btn-primary btn-lg px-4">
+                Add Your First Memory
+            </a>
+        {% else %}
+            <a href="/accounts/register/" class="btn btn-primary btn-lg px-4">
+                Get Started Free
+            </a>
+        {% endif %}
+    </div>
+
+</section>
+
+
+{% endblock %}

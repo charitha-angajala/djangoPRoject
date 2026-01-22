@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Memora</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    </style>
+<style>
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* Glassmorphism */
+.glass-card {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+</style>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body style="
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top right, rgba(79,70,229,0.18), transparent 40%),
+        radial-gradient(circle at bottom left, rgba(236,72,153,0.15), transparent 45%),
+        linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+">
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container mt-4">
+
+
+        <a class="navbar-brand fw-bold" href="/" style="letter-spacing:1px;">
+         Memora<span style="color:#8f94fb;">.</span>
+        </a>
+
+
+        <div class="d-flex gap-2">
+            <a href="/" class="btn btn-outline-light btn-sm">Home</a>
+            <a href="/memories/public/" class="btn btn-outline-light btn-sm">Public</a>
+
+            {% if user.is_authenticated %}
+                <a href="/memories/" class="btn btn-outline-light btn-sm">My Memories</a>
+                <a href="/memories/add/" class="btn btn-outline-light btn-sm">Add Memory</a>
+                <a href="/accounts/logout/" class="btn btn-danger btn-sm">Logout</a>
+            {% else %}
+                <a href="/accounts/login/" class="btn btn-outline-light btn-sm">Login</a>
+                <a href="/accounts/register/" class="btn btn-success btn-sm">Register</a>
+            {% endif %}
+        </div>
+
+    </div>
+</nav>
+
+<div class="container mt-4">
+    {% block content %}
+    {% endblock %}
+</div>
+
+
+</body>
+<!-- FOOTER -->
+<footer class="mt-5 pt-4 pb-3"
+        style="background: rgba(0,0,0,0.05);">
+
+    <div class="container">
+        <div class="row text-center text-md-start">
+
+            <!-- Brand -->
+            <div class="col-md-4 mb-3">
+                <h5 class="fw-bold">Memora</h5>
+                <p class="text-muted small">
+                    A personal space to save moments,<br>
+                    stories, and memories that matter.
+                </p>
+            </div>
+
+            <!-- Links -->
+            <div class="col-md-4 mb-3">
+                <h6 class="fw-semibold">Quick Links</h6>
+                <ul class="list-unstyled small">
+                    <li><a href="/" class="text-decoration-none text-muted">Home</a></li>
+                    <li><a href="/memories/public/" class="text-decoration-none text-muted">Public Memories</a></li>
+                    <li><a href="/memories/" class="text-decoration-none text-muted">My Memories</a></li>
+                </ul>
+            </div>
+
+            <!-- Credits -->
+            <div class="col-md-4 mb-3 text-md-end">
+            <p class="small text-muted mb-1">
+                Built with ❤️ by <strong>Charitha Angajala</strong>
+            </p>
+            <p class="small text-muted">
+                © {{ now|date:"Y" }} Memora
+            </p>
+            </div>
+
+
+        </div>
+    </div>
+</footer>
+</html>
